@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Utilisation avec CodeTime</h2>
+
+    <div id="contenu"></div>
+
+    <script>
+      fetch("data.json")
+        .then((response) => response.json())
+        .then((data) => {
+          let html = "";
+
+          html += `<h3>Utilisation des éditeurs</h3>`;
+          html += `<div id="editor">`;
+          const sortedEditor = Object.fromEntries(
+            Object.entries(data.editor).sort(([,a],[,b]) => b - a)
+          );
+          for (const editor in sortedEditor) {
+            html += `<h3>${editor}</h3>`;
+            html += `<p>Utilisation : ${sortedEditor[editor]}%</p>`;
+          }
+          html += `</div>`;
+
+          html += `<h3>Utilisation des os</h3>`;
+          html += `<div id="os">`;
+          const sortedOs = Object.fromEntries(
+            Object.entries(data.platform).sort(([,a],[,b]) => b - a)
+          );
+          for (const platform in sortedOs) {
+            html += `<h3>${platform}</h3>`;
+            html += `<p>Utilisation : ${sortedOs[platform]}%</p>`;
+          }
+          html += `</div>`;
+
+          html += `<h3>Utilisation des langages</h3>`;
+          html += `<div id="language">`;
+          const sortedLangages = Object.fromEntries(
+            Object.entries(data.language).sort(([,a],[,b]) => b - a)
+          );
+          for (const language in sortedLangages) {
+            html += `<h3>${language}</h3>`;
+            html += `<p>Utilisation : ${sortedLangages[language]}%</p>`;
+          }
+          html += `</div>`;
+
+          html += `<h3>Utilisation des projets</h3>`;
+          html += `<div id="project">`;
+          const sortedProjects = Object.fromEntries(
+            Object.entries(data.project).sort(([,a],[,b]) => b - a)
+          );
+          for (const project in sortedProjects) {
+            html += `<h3>${project}</h3>`;
+            html += `<p>Utilisation : ${sortedProjects[project]}%</p>`;
+          }
+          html += `</div>`;
+
+          html += `<h3>Utilisation des fichiers</h3>`;
+          html += `<div id="file">`;
+          const sortedFiles = Object.fromEntries(
+            Object.entries(data.relative_file).sort(([,a],[,b]) => b - a)
+          );
+          for (const relative_file in sortedFiles) {
+            html += `<h3>${relative_file}</h3>`;
+            html += `<p>Utilisation : ${sortedFiles[relative_file]}%</p>`;
+          }
+          html += `</div>`;
+
+          document.getElementById("contenu").innerHTML = html;
+        })
+        .catch((error) => console.error("Erreur:", error));
+    </script>
+  </body>
+</html>

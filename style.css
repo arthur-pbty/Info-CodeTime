@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #666;
+  margin: 10px 0;
+}
+
+p {
+  color: #999;
+  margin: 5px 0;
+}
+
+#contenu {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#contenu div {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
